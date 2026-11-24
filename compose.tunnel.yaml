@@ -1,0 +1,8 @@
+services:
+  tunnel:
+    image: cloudflare/cloudflared:latest
+    command: tunnel --no-autoupdate --url http://worker:8000
+    depends_on:
+      worker:
+        condition: service_healthy
+    restart: unless-stopped
