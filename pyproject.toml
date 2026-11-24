@@ -1,0 +1,16 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "keras-gaussian-splatting"
+version = "0.1.0"
+description = "TensorFlow/Keras-first 3D Gaussian Splatting reference implementation"
+requires-python = ">=3.10"
+dependencies = ["tensorflow>=2.15", "numpy>=1.24", "opencv-python>=4.8", "Pillow>=10.0", "scipy>=1.10", "tqdm>=4.66"]
+
+[project.scripts]
+gsplat-keras = "gsplat_keras.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["gsplat_keras*"]
