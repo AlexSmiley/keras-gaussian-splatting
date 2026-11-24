@@ -1,0 +1,16 @@
+services:
+  worker:
+    build:
+      context: .
+      dockerfile: Dockerfile.worker
+    environment:
+      WORKER_TOKEN: ${WORKER_TOKEN:?Set WORKER_TOKEN in .env}
+      JOB_DIR: /data/jobs
+      COLMAP_USE_GPU: "0"
+    ports:
+      - "127.0.0.1:8000:8000"
+    volumes:
+      - reconstruction-data:/data/jobs
+    restart: unless-stopped
+volumes:
+  reconstruction-data:

@@ -4,3 +4,8 @@ __pycache__/
 *.py[cod]
 data/
 runs/
+
+.env
+.env.*
+!.env.example
+jobs/

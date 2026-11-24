@@ -86,3 +86,7 @@ def artifact(job: str, name: str, x_worker_token: str = Header(default="")):
     if not p.is_file():
         raise HTTPException(404)
     return FileResponse(p, filename=name if name != "viewer.html" else None)
+
+@app.get("/health")
+def health():
+    return {"status": "ok", "configured": bool(os.getenv("WORKER_TOKEN"))}

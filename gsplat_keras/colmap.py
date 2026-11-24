@@ -1,6 +1,7 @@
 from dataclasses import dataclass
 from pathlib import Path
 import subprocess
+import os
 import numpy as np
 from .camera import Camera, qvec_to_rotmat
 
@@ -15,14 +16,17 @@ def _run(args):
     subprocess.run(list(map(str, args)), check=True)
 
 def run_colmap(images_dir, workspace, executable="colmap", camera_model="OPENCV"):
+    use_gpu = os.getenv("COLMAP_USE_GPU", "1")
+    if use_gpu not in ("0", "1"):
+        raise ValueError("COLMAP_USE_GPU must be 0 or 1")
     images_dir, workspace = Path(images_dir), Path(workspace)
     workspace.mkdir(parents=True, exist_ok=True)
     database, sparse = workspace/"database.db", workspace/"sparse"
     sparse.mkdir(exist_ok=True)
     _run([executable,"feature_extractor","--database_path",database,"--image_path",images_dir,
-          "--ImageReader.camera_model",camera_model,"--SiftExtraction.use_gpu","1"])
+          "--ImageReader.camera_model",camera_model,"--SiftExtraction.use_gpu",use_gpu])
     matcher = "sequential_matcher" if len(list(images_dir.iterdir())) > 20 else "exhaustive_matcher"
-    _run([executable,matcher,"--database_path",database,"--SiftMatching.use_gpu","1"])
+    _run([executable,matcher,"--database_path",database,"--SiftMatching.use_gpu",use_gpu])
     _run([executable,"mapper","--database_path",database,"--image_path",images_dir,"--output_path",sparse])
     models = sorted(p for p in sparse.iterdir() if p.is_dir())
     if not models:
