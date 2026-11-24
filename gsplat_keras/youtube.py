@@ -53,7 +53,7 @@ def generate(url, workspace, *, every=15, max_frames=120, iterations=1000,
 def main():
     import argparse
     p = argparse.ArgumentParser()
-    p.add_argument("url")
+    p.add_argument("url", nargs="?", default="https://www.youtube.com/watch?v=oxxucX4dr5k", help="YouTube URL (defaults to the example test video)")
     p.add_argument("--workspace", required=True)
     p.add_argument("--authorized", action="store_true", required=True)
     args = p.parse_args()
