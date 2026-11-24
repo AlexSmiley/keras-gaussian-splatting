@@ -1,8 +1,2 @@
-tensorflow>=2.15
-numpy>=1.24
-opencv-python>=4.8
-Pillow>=10.0
-scipy>=1.10
-tqdm>=4.66
-open3d>=0.18
-pytest>=7.4
+# Lightweight Vercel HTTP entrypoint has no third-party dependencies.
+# Install the full ML/training stack locally with: pip install -r requirements-ml.txt
