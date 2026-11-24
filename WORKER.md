@@ -1,4 +1,9 @@
 # Worker deployment
+
+**Vercel frontend:** [https://keras-gaussian-splatting.vercel.app](https://keras-gaussian-splatting.vercel.app)
+
+Reconstruction requires a running worker and configured Vercel environment variables.
+
 The default container uses CPU TensorFlow and CPU COLMAP for portability. Training may be slow and memory intensive. GPU acceleration requires a compatible GPU runtime/image; this container does not configure CUDA.
 
 1. Install Docker with Compose on a Linux host with sufficient RAM and disk.

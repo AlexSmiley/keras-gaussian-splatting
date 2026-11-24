@@ -1,4 +1,9 @@
 # Local Windows worker + Vercel
+
+**Vercel frontend:** [https://keras-gaussian-splatting.vercel.app](https://keras-gaussian-splatting.vercel.app)
+
+Reconstruction requires a running worker and configured Vercel environment variables.
+
 Install Docker Desktop with WSL2 and Linux containers. From PowerShell in the repository run:
 ```powershell
 powershell -ExecutionPolicy Bypass -File scripts/start-local.ps1

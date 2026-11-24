@@ -1,5 +1,10 @@
 # Keras Gaussian Splatting
 
+**Vercel frontend:** [https://keras-gaussian-splatting.vercel.app](https://keras-gaussian-splatting.vercel.app)
+
+Reconstruction requires a running worker and configured Vercel environment variables.
+
+
 Experimental TensorFlow/Keras reconstruction from images or video. The renderer is a dense, isotropic reference implementation, not production-quality 3DGS.
 
 ## YouTube to splat
