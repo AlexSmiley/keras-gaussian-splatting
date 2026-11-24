@@ -1,0 +1,4 @@
+-r ../requirements-ml.txt
+yt-dlp
+fastapi
+uvicorn
